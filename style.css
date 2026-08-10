@@ -1,0 +1,765 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
+  background-color: #031129;
+  color: #fff;
+}
+/* Sekuya / Vintage Font Class */
+.sekuya-font {
+  font-family: "Rye", cursive, serif;
+}
+/*Fluid Simulation Canvas*/
+#fluidCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+}
+/* Background GIF positioned properly behind all content layer */
+#gif-bg-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#gif-bg-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gif-hidden {
+  display: none;
+}
+/* Intro screen wrapper removed when Enter is clicked so it doesn't block hero card */
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  background-color: #031129;
+  transition: opacity 0.8s ease;
+}
+#intro-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.intro-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+/* Centered Title Box */
+.title-box {
+  background-color: #4a2511;
+  border: 2px solid #e0a96d;
+  padding: 15px 40px;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.title {
+  font-family: "Rye", cursive, serif;
+  font-size: 3rem;
+  color: #ffffff;
+  letter-spacing: 3px;
+}
+/* Rectangular Brown Buttons */
+.brown-btn {
+  background-color: #4a2511;
+  color: #ffffff;
+  border: 2px solid #e0a96d;
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.brown-btn:hover {
+  background-color: #633318;
+  transform: translateY(-2px);
+}
+
+.audio-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  z-index: 60;
+}
+/* Main home page container sits above GIF background */
+#home-page {
+  position: relative;
+  min-height: 100vh;
+  z-index: 10;
+}
+#home-page.hidden {
+  display: none;
+}
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(3, 17, 41, 0.75);
+  backdrop-filter: blur(8px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 40;
+}
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-logo-icon,
+.brand-icon {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.ticket-btn {
+  background: #f18a22;
+  color: #fff;
+  padding: 8px 18px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px dashed #fff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f18a22;
+}
+
+/* Social Sidebar (Left)*/
+.social-sidebar {
+  position: fixed;
+  left: 25px;
+  top: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 30;
+}
+
+.sidebar-line {
+  width: 2px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 5px;
+}
+
+.social-sidebar a {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    color 0.2s;
+}
+
+.social-sidebar a:hover {
+  transform: scale(1.2);
+  color: #f18a22;
+}
+
+/* Scroll Sidebar(Right) */
+.scroll-sidebar {
+  position: fixed;
+  right: 25px;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 30;
+}
+
+.scroll-text {
+  writing-mode: vertical-rl;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.water-bubble-indicator {
+  width: 14px;
+  height: 14px;
+  background: #00b4d8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #90e0ef;
+  animation: bubbleSlide 2s infinite ease-in-out;
+}
+
+@keyframes bubbleSlide {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(30px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hero Content */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 100px 20px 40px 20px;
+}
+.hero-card {
+  text-align: center;
+  max-width: 850px;
+  background: rgba(10, 15, 30, 0.55);
+  padding: 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Slide in from right animation */
+.slide-in-right {
+  animation: slideRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-title {
+  font-size: 2.2rem;
+  color: #fceade;
+}
+
+.hero-subtitle {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.hero-tagline {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #e0a96d;
+}
+
+.hero-details {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.action-btn {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+}
+
+.icon-only-btn {
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 1.1rem;
+}
+
+/* Placeholder Page Sections */
+.page-section {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+}
+
+/*Base Floating Container Style*/
+.floating-card {
+  width: 90%;
+  max-width: 950px;
+  background: rgba(10, 15, 30, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #e0a96d;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+/* =========================================================
+   ABOUT US SECTION - GRAYISH-BLUE BOX & VINE CLIMBERS
+   ========================================================= */
+
+/* Main Container: Grayish-Blue Background */
+.about-card {
+  position: relative;
+  max-width: 1050px;
+  background: rgba(30, 42, 56, 0.75); /* Dark Grayish-Blue tone */
+  border: 2px solid #3a506b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 16px;
+  overflow: visible; /* Allows leaves to spill slightly over the edges */
+}
+
+/* Two-Column Grid Setup */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 35px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Left Icon Container */
+.about-icon-box {
+  background: rgba(15, 23, 36, 0.8);
+  border: 2px solid #5bc0be;
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.about-logo-img {
+  max-width: 80%;
+  max-height: 250px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(91, 192, 190, 0.4));
+}
+
+/* Right Description Column */
+.about-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Grayish-Blue Text Box Cards */
+.about-text-card {
+  background: rgba(20, 29, 38, 0.85);
+  border: 1px solid #3a506b;
+  border-radius: 10px;
+  padding: 22px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.about-text-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #e0e6ed;
+}
+
+.highlight-text {
+  color: #ffb703;
+}
+
+.about-bullet-list {
+  list-style: none;
+  margin-top: 12px;
+  padding-left: 5px;
+}
+
+.about-bullet-list li {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 18px;
+}
+
+.about-bullet-list li::before {
+  content: "•";
+  color: #ffb703;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+/* Money Plant Climber Vines at Corners */
+.vine {
+  position: absolute;
+  color: #52b788; /* Money plant leaf green color */
+  font-size: 1.8rem;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+}
+
+.vine-top-left {
+  top: -12px;
+  left: -12px;
+  transform: rotate(-35deg);
+}
+
+.vine-top-right {
+  top: -12px;
+  right: -12px;
+  transform: rotate(35deg);
+}
+
+.vine-bottom-left {
+  bottom: -12px;
+  left: -12px;
+  transform: rotate(-135deg);
+}
+
+.vine-bottom-right {
+  bottom: -12px;
+  right: -12px;
+  transform: rotate(135deg);
+}
+
+/* Responsive adjustment for mobile views */
+@media (max-width: 850px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/*=======
+Sponsers
+========*/
+
+/* Horizontal Scroll Container for Sponsors */
+.sponsors-card {
+  max-width: 1000px;
+  overflow: hidden;
+}
+
+.sponsors-scroll-container {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  padding: 50px 20px 20px 20px;
+  scroll-behavior: smooth;
+  /*Custom Scrollbar for Webkit*/
+  scrollbar-width: thin;
+  scrollbar-color: #00b4d8 rgba(255, 255, 255, 0.1);
+}
+
+.sponsors-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.sponsors-scroll-container::-webkit-scrollbar-thumb {
+  background: #00b4d8;
+  border-radius: 4px;
+}
+
+/* Lily Pad & Frog Sponsor Styling */
+.lily-pad-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.frog-icon {
+  font-size: 1.8rem;
+  color: #2ec4b6;
+  position: absolute;
+  top: -35px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lily-pad {
+  width: 170px;
+  height: 110px;
+  background: radial-gradient(circle, #1b4332 0%, #081c15 100%);
+  border: 3px solid #2d6a4f;
+  /* Leaf Cutout Shape */
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  clip-path: polygon(0% 0%, 85% 0%, 50% 50%, 85% 100%, 0% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.sponsor-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #d8f3dc;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Frog Jump Animation on Hover */
+.lily-pad-wrapper:hover .frog-icon {
+  transform: translateY(-20px) scale(1.2);
+  color: #70e000;
+}
+
+.lily-pad-wrapper:hover .lily-pad {
+  transform: scale(1.05);
+  border-color: #52b788;
+}
+
+/* =========================================================
+   TIMELINE WATER STREAM & FLOATING BOAT STYLES
+   ========================================================= */
+
+.timeline-container {
+  max-width: 1000px;
+  position: relative;
+}
+
+.timeline-wrapper {
+  position: relative;
+  padding: 40px 0;
+}
+
+/* Central Water Stream */
+.water-stream {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #0077b6 0%, #00b4d8 50%, #0077b6 100%);
+  border-radius: 10px;
+  box-shadow:
+    0 0 15px rgba(0, 180, 216, 0.7),
+    inset 0 0 6px rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  overflow: visible;
+}
+
+/* Water Flow Ripple Animation */
+.water-waves {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  animation: streamFlow 2.5s linear infinite;
+}
+
+@keyframes streamFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+/* Floating Boat */
+.boat {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.2rem;
+  color: #ffb703;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+  z-index: 5;
+  transition: top 0.1s ease-out;
+  animation: boatBobbing 2s ease-in-out infinite alternate;
+}
+
+@keyframes boatBobbing {
+  0% {
+    transform: translate(-50%, -50%) rotate(-6deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(6deg);
+  }
+}
+
+/* Timeline Cards Layout */
+.timeline-stoppages {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  position: relative;
+  z-index: 3;
+}
+
+.stoppage-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.stoppage-item.left {
+  justify-content: flex-end;
+  padding-right: 52%;
+}
+
+.stoppage-item.right {
+  justify-content: flex-start;
+  padding-left: 52%;
+}
+
+/* Content Box Styling */
+.stoppage-box {
+  background: rgba(10, 15, 30, 0.85);
+  border: 2px solid #00b4d8;
+  border-radius: 10px;
+  padding: 20px 24px;
+  width: 320px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.stoppage-box h3 {
+  color: #e0a96d;
+  font-family: "Rye", cursive, serif;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.stoppage-box p {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Docking Node Points */
+.dock-point {
+  width: 16px;
+  height: 16px;
+  background: #ffb703;
+  border: 3px solid #031129;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  box-shadow: 0 0 10px #ffb703;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Active Highlight when Boat Reaches a Stoppage */
+.stoppage-item.active .stoppage-box {
+  border-color: #ffb703;
+  box-shadow: 0 0 20px rgba(255, 183, 3, 0.6);
+  transform: scale(1.04);
+}
+
+.stoppage-item.active .dock-point {
+  background: #70e000;
+  box-shadow: 0 0 15px #70e000;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+  .water-stream,
+  .dock-point {
+    left: 25px;
+  }
+  .stoppage-item.left,
+  .stoppage-item.right {
+    padding-left: 60px;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+  .stoppage-box {
+    width: 100%;
+  }
+}
