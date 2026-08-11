@@ -134,18 +134,26 @@ html {
   width: 100%;
   z-index: 40;
 }
+/* Ensure left and right navbar items align horizontally in the center */
 .nav-left,
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
-.nav-logo-icon,
-.brand-icon {
-  color: #fff;
-  font-size: 1.2rem;
-  text-decoration: none;
+.nav-side-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Align and space the home icon directly to the left of HOME text */
+.nav-home-icon {
+  margin-right: 6px;
+  font-size: 0.95rem;
+  vertical-align: middle;
 }
 
 .ticket-btn {
@@ -947,6 +955,40 @@ Sponsers
   line-height: 1.6;
   color: #d1d5db;
   max-width: 580px;
+}
+
+/* Brand image logos (codeutsava.png & TCP.png) sizing */
+.footer-brand-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.footer-brand-img:hover {
+  transform: scale(1.08);
+}
+
+/* Flex wrapper to keep nit.web directly left of the ABOUT NIT RAIPUR heading */
+.footer-heading-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* NIT Raipur logo image sizing */
+.nit-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Override footer heading margin since wrapper handles spacing */
+.footer-heading-wrapper .footer-heading {
+  margin-bottom: 0;
 }
 
 /* Social & Quick Links */

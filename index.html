@@ -49,13 +49,13 @@
     <!-- Fluid Canvas for Cursor Simulation -->
     <canvas id="fluidCanvas"></canvas>
     <!-- Background Audio -->
-    <audio id="heroAudio" src="heroWaterAudio.mp3" loop preload="auto"></audio>
+    <audio id="heroAudio" src="assets/heroWaterAudio.mp3" loop preload="auto"></audio>
     <!-- Background GIF container -->
     <div id="gif-bg-container" class="gif-hidden">
       <img
         id="hero-gif"
         src=""
-        data-src="heroWaterVideo.gif"
+        data-src="assets/heroWaterVideo.gif"
         alt="Hero Background Animation"
       />
     </div>
@@ -77,9 +77,11 @@
       <header>
         <nav class="navbar">
           <div class="nav-left">
-            <a href="#hero" class="nav-logo-icon" aria-label="Home">
-              <i class="fa-solid fa-house"></i>
-            </a>
+            <img
+              src="assets/codeutsava.png"
+              alt="Codeutsava Icon"
+              class="nav-side-icon"
+            />
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
               class="ticket-btn"
@@ -87,7 +89,11 @@
             >
           </div>
           <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
+            <li>
+              <a href="#hero">
+                <i class="fa-solid fa-house nav-home-icon"></i>Home</a
+              >
+            </li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#sponsors">Sponsors</a></li>
             <li><a href="#timeline">Timeline</a></li>
@@ -101,9 +107,7 @@
               class="ticket-btn"
               >BROCHURE</a
             >
-            <div class="brand-icon">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
+            <img src="assets/tcp.png" alt="TCP Icon" class="nav-side-icon" />
           </div>
         </nav>
       </header>
@@ -179,7 +183,7 @@
             </a>
             <!-- Devfolio Registration Steps Link -->
             <a
-              href="YOUR_DEVFOLIO_STEPS.pdf"
+              href="assets/registrationInstructions.pdf"
               target="_blank"
               rel="noopener noreferrer"
               class="action-btn text-btn"
@@ -217,7 +221,11 @@
             <!-- Left Column: Icon Container -->
             <div class="about-icon-box">
               <!-- ICON IMAGE LINK  -->
-              <img src="TCP1.png" alt="TCP logo" class="about-logo-img" />
+              <img
+                src="assets/tcpWithName.png"
+                alt="TCP logo"
+                class="about-logo-img"
+              />
             </div>
 
             <!-- Right Column: Description Cards -->
@@ -266,12 +274,7 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
-                <img
-                  src="YOUR_FOLD_ICON_URL.png"
-                  alt="Fold Logo"
-                  class="sponsor-logo"
-                />
+                <img src="assets/fold.png" alt="Fold Logo" class="sponsor-logo" />
                 <span class="sponsor-name">Fold</span>
               </div>
             </div>
@@ -280,13 +283,8 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
-                <img
-                  src="YOUR_DEVFOLIO_ICON_URL.png"
-                  alt="Devfolio Logo"
-                  class="sponsor-logo"
-                />
-                <span class="sponsor-name">Devfolio</span>
+                <img src="assets/gktmt.jpg" alt="GK TMT Logo" class="sponsor-logo" />
+                <span class="sponsor-name">GK TMT</span>
               </div>
             </div>
 
@@ -294,9 +292,8 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_ETHINDIA_ICON_URL.png"
+                  src="assets/EthIndia.png"
                   alt="ETHIndia Logo"
                   class="sponsor-logo"
                 />
@@ -308,9 +305,8 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_POLYGON_ICON_URL.png"
+                  src="assets/polygon.webp"
                   alt="Polygon Logo"
                   class="sponsor-logo"
                 />
@@ -322,13 +318,12 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_REPLIT_ICON_URL.png"
-                  alt="Replit Logo"
+                  src="assets/wolfram.webp"
+                  alt="Wolfram Logo"
                   class="sponsor-logo"
                 />
-                <span class="sponsor-name">Replit</span>
+                <span class="sponsor-name">Wolfram</span>
               </div>
             </div>
 
@@ -336,51 +331,39 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_CODE_PLAYERS_ICON_URL.png"
-                  alt="Code Players Logo"
+                  src="assets/polygon.webp"
+                  alt="Polygon Logo"
                   class="sponsor-logo"
                 />
-                <span class="sponsor-name">CODE PLAYERS</span>
+                <span class="sponsor-name">Polygon</span>
               </div>
             </div>
             <!-- Sponsor Item 7 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_AlgoUniversity_ICON_URL.png"
-                  alt="Algo University Logo"
+                  src="assets/wolfram.webp"
+                  alt="Wolfram Logo"
                   class="sponsor-logo"
                 />
-                <span class="sponsor-name">Algo University</span>
+                <span class="sponsor-name">Wolfram</span>
               </div>
             </div>
             <!-- Sponsor Item 8-->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
-                <img
-                  src="YOUR_ETHIndia_ICON_URL.png"
-                  alt="ETH India Logo"
-                  class="sponsor-logo"
-                />
-                <span class="sponsor-name">ETH India</span>
+                <img src="assets/gktmt.jpg" alt="GK TMT Logo" class="sponsor-logo" />
+                <span class="sponsor-name">GK TMT</span>
               </div>
             </div>
             <!-- Sponsor Item 9 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
-                <img
-                  src="YOUR_LIC_ICON_URL.png"
-                  alt="LIC Logo"
-                  class="sponsor-logo"
-                />
+                <img src="assets/lic.jpg" alt="LIC Logo" class="sponsor-logo" />
                 <span class="sponsor-name">LIC</span>
               </div>
             </div>
@@ -389,9 +372,8 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <!-- Replace src with your icon link -->
                 <img
-                  src="YOUR_POLYGON_ICON_URL.png"
+                  src="assets/polygon.webp"
                   alt="Polygon Logo"
                   class="sponsor-logo"
                 />
@@ -654,17 +636,23 @@
           <!-- Left Column: Logos & About NIT Raipur -->
           <div class="footer-about-col">
             <div class="footer-brand-logos">
-              <!-- Replace # with your brand logo link -->
-              <a href="#" class="footer-logo-icon"
-                ><i class="fa-solid fa-house"></i
-              ></a>
-              <!-- Replace # with TCP club logo link -->
-              <a href="#" class="footer-logo-icon"
-                ><i class="fa-solid fa-wand-magic-sparkles"></i
-              ></a>
+              <a href="#hero" class="footer-logo-link">
+                <img
+                  src="assets/codeutsava.png"
+                  alt="Codeutsava Logo"
+                  class="footer-brand-img"
+                />
+              </a>
+              <a href="#" class="footer-logo-link">
+                <img src="assets/TCP.png" alt="TCP Logo" class="footer-brand-img" />
+              </a>
             </div>
+            <!-- About Section: Added nit.web directly to the left of the heading -->
             <div class="footer-about-content">
-              <h3 class="sekuya-font footer-heading">ABOUT NIT RAIPUR</h3>
+              <div class="footer-heading-wrapper">
+                <img src="assets/NIT.webp" alt="NIT Raipur Logo" class="nit-logo-img" />
+                <h3 class="sekuya-font footer-heading">ABOUT NIT RAIPUR</h3>
+              </div>
               <p class="footer-text">
                 The institute is committed to the challenging task of developing
                 technical education by preparing seasoned graduates in highly
@@ -692,7 +680,10 @@
                   aria-label="Instagram"
                   ><i class="fa-brands fa-instagram"></i
                 ></a>
-                <a href="https://github.com/TCP-Tech" target="_blank" aria-label="GitHub"
+                <a
+                  href="https://github.com/TCP-Tech"
+                  target="_blank"
+                  aria-label="GitHub"
                   ><i class="fa-brands fa-github"></i
                 ></a>
                 <a
