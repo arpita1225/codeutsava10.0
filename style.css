@@ -27,7 +27,7 @@ html {
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 99;
+  z-index: 999; /* Higher z-index so cursor trails always render on top */
 }
 /* Background GIF positioned properly behind all content layer */
 #gif-bg-container {
@@ -57,8 +57,10 @@ html {
   justify-content: center;
   align-items: center;
   z-index: 50;
-  background-color: #031129;
+  /* 180deg gradient: Sky light blue at top -> Medium ocean blue -> Deep ocean dark blue at bottom */
+  background: linear-gradient(180deg, #8ecae6 0%, #0077b6 50%, #03045e 100%);
   transition: opacity 0.8s ease;
+  overflow: hidden;
 }
 #intro-screen.fade-out {
   opacity: 0;
@@ -553,27 +555,44 @@ Sponsers
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/*  Full Leaf Shape without Clip-Path Notch */
 .lily-pad {
-  width: 170px;
-  height: 110px;
+  width: 210px;
+  height: 90px;
   background: radial-gradient(circle, #1b4332 0%, #081c15 100%);
   border: 3px solid #2d6a4f;
-  /* Leaf Cutout Shape */
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  clip-path: polygon(0% 0%, 85% 0%, 50% 50%, 85% 100%, 0% 100%);
+  /* Smooth organic full leaf shape */
+  border-radius: 50px 15px 50px 15px;
+  /* Flexbox row: Left icon + Right text */
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 12px;
+  padding: 0 18px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
+/* Sponsor Icon/Logo on Left Side */
+.sponsor-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Sponsor Text */
 .sponsor-name {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #d8f3dc;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 /* Frog Jump Animation on Hover */
@@ -651,7 +670,8 @@ Sponsers
   color: #ffb703;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
   z-index: 5;
-  transition: top 0.1s ease-out;
+  /* Bounce/jump curve transition when moving between stoppage points */
+  transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   animation: boatBobbing 2s ease-in-out infinite alternate;
 }
 
@@ -761,5 +781,420 @@ Sponsers
   }
   .stoppage-box {
     width: 100%;
+  }
+}
+
+/* =========================================================
+   FAQS ACCORDION STYLING (SINGLE OPEN ITEM LOGIC)
+   ========================================================= */
+
+.faq-card {
+  max-width: 900px;
+  background: rgba(30, 42, 56, 0.75);
+  backdrop-filter: blur(10px);
+  border: 2px solid #3a506b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 40px;
+  border-radius: 16px;
+}
+
+/* Header Banner */
+.faq-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.faq-banner-text h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.faq-banner-text p {
+  color: #fceade;
+  font-size: 0.95rem;
+}
+
+.faq-banner-icon {
+  font-size: 3.5rem;
+  color: #ffb703;
+  filter: drop-shadow(0 0 10px rgba(255, 183, 3, 0.5));
+}
+
+/* Accordion Wrapper */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Light Cream Question Box */
+.faq-item {
+  background: #fdf5e6;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Question Header Button */
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 16px 24px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.question-text {
+  color: #8b1e00;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.faq-icon {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #8b1e00;
+  transition: transform 0.3s ease;
+}
+
+/* Answer Drawer (Smooth Collapse/Expand) */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s ease-in-out,
+    padding 0.3s ease;
+  padding: 0 24px;
+  text-align: left;
+}
+
+.faq-answer p {
+  color: #6a1b00;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-bottom: 16px;
+}
+
+/* Active State (Expands answer box) */
+.faq-item.active .faq-answer {
+  max-height: 200px; /* High enough value to fit answer text */
+}
+
+.faq-item.active {
+  border: 2px solid #ffb703;
+}
+
+/* =========================================================
+   FLOATING FOOTER STYLES
+   ========================================================= */
+
+.site-footer {
+  width: 95%;
+  max-width: 1200px;
+  margin: 60px auto 30px auto;
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 35px 40px 20px 40px;
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* About Section */
+.footer-brand-logos {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-logo-icon {
+  color: #ffb703;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo-icon:hover {
+  transform: scale(1.15);
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #d1d5db;
+  max-width: 580px;
+}
+
+/* Social & Quick Links */
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 25px;
+}
+
+.footer-social-box {
+  text-align: right;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.footer-social-icons a {
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-social-icons a:hover {
+  color: #ffb703;
+  transform: translateY(-3px);
+}
+
+.social-subtext {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  display: block;
+}
+
+.footer-links-list {
+  list-style: none;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links-list a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links-list a:hover {
+  color: #ffb703;
+}
+
+.footer-divider {
+  border: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 30px 0 20px 0;
+}
+
+/* Bottom Bar */
+.footer-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.footer-credits {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.heart-icon {
+  color: #e63946;
+}
+
+.credit-icons a {
+  color: #9ca3af;
+  margin-left: 6px;
+  transition: color 0.2s;
+}
+
+.credit-icons a:hover {
+  color: #fff;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.back-to-top:hover {
+  color: #ffb703;
+}
+
+/* View Map Location Button */
+.map-location-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.map-location-btn:hover {
+  background: #ffb703;
+  color: #031129;
+  border-color: #ffb703;
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 850px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-nav-col {
+    align-items: flex-start;
+  }
+  .footer-social-box,
+  .footer-links-list {
+    text-align: left;
+  }
+  .footer-social-icons {
+    justify-content: flex-start;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   GUIDELINES SECTION STYLES
+   ========================================================= */
+
+.guidelines-card {
+  max-width: 950px;
+  background: rgba(18, 22, 35, 0.85);
+  border: 2px solid #ffb703;
+  padding: 40px 45px;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.guidelines-card .section-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.guidelines-subtitle {
+  font-size: 2.2rem;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.guidelines-list {
+  margin-left: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.guidelines-list li {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+/* Highlighted Gold Text */
+.guidelines-card .highlight-text {
+  color: #ffb703;
+  font-weight: bold;
+}
+
+/* Note Banner Box */
+.guidelines-note {
+  background: rgba(255, 183, 3, 0.08);
+  border-left: 4px solid #ffb703;
+  padding: 16px 20px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.guidelines-note p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #f1f5f9;
+}
+
+/* Ticket Button Alignment */
+.guidelines-action {
+  display: flex;
+  justify-content: center;
+}
+
+.judgement-btn {
+  background: #ffb703;
+  color: #031129;
+  padding: 12px 30px;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: 1px dashed #031129;
+  box-shadow: 0 4px 15px rgba(255, 183, 3, 0.4);
+  transition: all 0.3s ease;
+}
+
+.judgement-btn:hover {
+  background: #ffa000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 183, 3, 0.6);
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+  .guidelines-card {
+    padding: 25px 20px;
+  }
+  .guidelines-subtitle {
+    font-size: 1.7rem;
   }
 }

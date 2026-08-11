@@ -21,7 +21,7 @@
     <!-- Font Awesome for Social & Discord Icons -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
     <link rel="stylesheet" href="style.css" />
@@ -44,6 +44,7 @@
     <meta property="og:url" content="https://codeutsava.nitrr.ac.in" />
     <meta property="og:type" content="website" />
   </head>
+
   <body>
     <!-- Fluid Canvas for Cursor Simulation -->
     <canvas id="fluidCanvas"></canvas>
@@ -76,9 +77,9 @@
       <header>
         <nav class="navbar">
           <div class="nav-left">
-            <a href="home.png" class="nav-logo-icon"
-              ><i class="fa-solid fa-house"></i
-            ></a>
+            <a href="#hero" class="nav-logo-icon" aria-label="Home">
+              <i class="fa-solid fa-house"></i>
+            </a>
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfHv8OJ7jkp9thPyPx1HrWJNPoGZ2z7FaFtIqpz7lO3dIqqgg/viewform?pli=1"
               class="ticket-btn"
@@ -90,10 +91,9 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#sponsors">Sponsors</a></li>
             <li><a href="#timeline">Timeline</a></li>
-            <li><a href="guidelines">Guidelines</a></li>
+            <li><a href="guidelines">GUIDELINES</a></li>
             <li><a href="#faqs">FAQs</a></li>
             <li><a href="#contact">CONTACT US</a></li>
-            <li><a href="#team">TEAM</a></li>
           </ul>
           <div class="nav-right">
             <a
@@ -178,7 +178,12 @@
               <i class="fa-brands fa-discord"></i>
             </a>
             <!-- Devfolio Registration Steps Link -->
-            <a href="#devfolio-steps" class="action-btn text-btn">
+            <a
+              href="YOUR_DEVFOLIO_STEPS.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="action-btn text-btn"
+            >
               STEPS TO REGISTER ON DEVFOLIO
             </a>
           </div>
@@ -189,129 +194,194 @@
 
       <!--About Us Section-->
       <section id="about" class="page-section">
-         <!-- Main Floating Card Container -->
-  <div class="floating-card about-card">
-    
-    <!-- Money Plant Vine Climber Decorations on Edges -->
-    <div class="vine vine-top-left"><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i></div>
-    <div class="vine vine-top-right"><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i></div>
-    <div class="vine vine-bottom-left"><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i></div>
-    <div class="vine vine-bottom-right"><i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i></div>
+        <!-- Main Floating Card Container -->
+        <div class="floating-card about-card">
+          <!-- Money Plant Vine Climber Decorations on Edges -->
+          <div class="vine vine-top-left">
+            <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="vine vine-top-right">
+            <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="vine vine-bottom-left">
+            <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i>
+          </div>
+          <div class="vine vine-bottom-right">
+            <i class="fa-solid fa-leaf"></i><i class="fa-solid fa-seedling"></i>
+          </div>
 
-    <h2 class="sekuya-font section-title">ABOUT US</h2>
+          <h2 class="sekuya-font section-title">ABOUT US</h2>
 
-    <!-- Two-Column Layout (Icon on Left, Descriptions on Right) -->
-    <div class="about-grid">
-      
-      <!-- Left Column: Icon Container -->
-      <div class="about-icon-box">
-        <!-- ICON IMAGE LINK  -->
-        <img src="TCP1.png" alt="TCP logo" class="about-logo-img" />
-      </div>
+          <!-- Two-Column Layout (Icon on Left, Descriptions on Right) -->
+          <div class="about-grid">
+            <!-- Left Column: Icon Container -->
+            <div class="about-icon-box">
+              <!-- ICON IMAGE LINK  -->
+              <img src="TCP1.png" alt="TCP logo" class="about-logo-img" />
+            </div>
 
-      <!-- Right Column: Description Cards -->
-      <div class="about-content-wrapper">
-        
-        <!-- Top Description Box -->
-        <div class="about-text-card">
-          <p>
-            <strong class="highlight-text">CODEUTSAVA</strong> is an annual event organized by the Turing Club of Programmers. It brings together like-minded coders from across the nation to foster a thriving coding culture with workshops, hackathons, gaming battles, MIC sessions, and more.
-          </p>
+            <!-- Right Column: Description Cards -->
+            <div class="about-content-wrapper">
+              <!-- Top Description Box -->
+              <div class="about-text-card">
+                <p>
+                  <strong class="highlight-text">CODEUTSAVA</strong> is an
+                  annual event organized by the Turing Club of Programmers. It
+                  brings together like-minded coders from across the nation to
+                  foster a thriving coding culture with workshops, hackathons,
+                  gaming battles, MIC sessions, and more.
+                </p>
+              </div>
+
+              <!-- Bottom Description Box -->
+              <div class="about-text-card">
+                <p>
+                  The heart of
+                  <strong class="highlight-text">CODEUTSAVA</strong> is the
+                  <strong class="highlight-text">28-hour hackathon</strong>,
+                  where participants build ambitious ideas at speed and scale.
+                  This year's edition features a
+                  <strong class="highlight-text">33 L+ prize pool</strong>
+                  including
+                  <strong class="highlight-text">1.5–2 L cash prizes</strong>.
+                </p>
+                <ul class="about-bullet-list">
+                  <li>28-hour hackathon</li>
+                  <li>Workshops, MIC sessions & mentorship</li>
+                  <li>Gaming battles & community showcases</li>
+                  <li>Big prize pool & industry partners</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Bottom Description Box -->
-        <div class="about-text-card">
-          <p>
-            The heart of <strong class="highlight-text">CODEUTSAVA</strong> is the <strong class="highlight-text">28-hour hackathon</strong>, where participants build ambitious ideas at speed and scale. This year's edition features a <strong class="highlight-text">33 L+ prize pool</strong> including <strong class="highlight-text">1.5–2 L cash prizes</strong>.
-          </p>
-          <ul class="about-bullet-list">
-            <li>28-hour hackathon</li>
-            <li>Workshops, MIC sessions & mentorship</li>
-            <li>Gaming battles & community showcases</li>
-            <li>Big prize pool & industry partners</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
       <!--sponsors section with frog on Lily pad-->
       <section id="sponsors" class="page-section">
         <div class="floating-card sponsors-card">
           <h2 class="sekuyu-font section-title">OUR SPONSORS</h2>
           <!--Horizontally Scrollable Track-->
           <div class="sponsors-scroll-container">
-            <!--Sponsor Item 1-->
+            <!-- Sponsor Item 1 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_FOLD_ICON_URL.png"
+                  alt="Fold Logo"
+                  class="sponsor-logo"
+                />
                 <span class="sponsor-name">Fold</span>
               </div>
             </div>
 
-            <!--Sponsor Item 2-->
+            <!-- Sponsor Item 2 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <span class="sponsor-name">TLE</span>
-              </div>
-            </div>
-
-            <!--Sponsor Item 3-->
-            <div class="lily-pad-wrapper">
-              <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
-              <div class="lily-pad">
-                <span class="sponsor-name">Wolfram</span>
-              </div>
-            </div>
-
-            <!--Sponsor Item 4-->
-            <div class="lily-pad-wrapper">
-              <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
-              <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_DEVFOLIO_ICON_URL.png"
+                  alt="Devfolio Logo"
+                  class="sponsor-logo"
+                />
                 <span class="sponsor-name">Devfolio</span>
               </div>
             </div>
 
-            <!--Sponsor Item 5-->
+            <!-- Sponsor Item 3 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <span class="sponsor-name">GK TMT</span>
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_ETHINDIA_ICON_URL.png"
+                  alt="ETHIndia Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">ETHIndia</span>
               </div>
             </div>
 
-            <!--Sponsor Item 6-->
+            <!-- Sponsor Item 4 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <span class="sponsor-name">LIC</span>
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_POLYGON_ICON_URL.png"
+                  alt="Polygon Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">Polygon</span>
               </div>
             </div>
 
-            <!--Sponsor Item 7-->
+            <!-- Sponsor Item 5 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <span class="sponsor-name">ETH India</span>
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_REPLIT_ICON_URL.png"
+                  alt="Replit Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">Replit</span>
               </div>
             </div>
 
-            <!--Sponsor Item 8-->
+            <!-- Sponsor Item 6 -->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_CODE_PLAYERS_ICON_URL.png"
+                  alt="Code Players Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">CODE PLAYERS</span>
+              </div>
+            </div>
+            <!-- Sponsor Item 7 -->
+            <div class="lily-pad-wrapper">
+              <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
+              <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_AlgoUniversity_ICON_URL.png"
+                  alt="Algo University Logo"
+                  class="sponsor-logo"
+                />
                 <span class="sponsor-name">Algo University</span>
               </div>
             </div>
-
-            <!--Sponsor Item 9-->
+            <!-- Sponsor Item 8-->
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
-                <span class="sponsor-name">CODE PLAYERS</span>
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_ETHIndia_ICON_URL.png"
+                  alt="ETH India Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">ETH India</span>
+              </div>
+            </div>
+            <!-- Sponsor Item 9 -->
+            <div class="lily-pad-wrapper">
+              <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
+              <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_LIC_ICON_URL.png"
+                  alt="LIC Logo"
+                  class="sponsor-logo"
+                />
+                <span class="sponsor-name">LIC</span>
               </div>
             </div>
 
@@ -319,13 +389,18 @@
             <div class="lily-pad-wrapper">
               <div class="frog-icon"><i class="fa-solid fa-frog"></i></div>
               <div class="lily-pad">
+                <!-- Replace src with your icon link -->
+                <img
+                  src="YOUR_POLYGON_ICON_URL.png"
+                  alt="Polygon Logo"
+                  class="sponsor-logo"
+                />
                 <span class="sponsor-name">Polygon</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       <!--Timelines-->
       <section id="timeline" class="page-section">
         <div class="floating-card timeline-container">
@@ -411,34 +486,282 @@
       </section>
       <!--Guidelines Section-->
       <section id="guidelines" class="page-section">
-        <div class="" flaoting-card>
-          <h2 class="sekuyu-font section-title">GUIDELINES</h2>
-          <p>Rules, eligibility, and participation instructions go here...</p>
+        <div class="floating-card guidelines-card">
+          <h2 class="sekuya-font section-title">GUIDELINES</h2>
+
+          <h3 class="sekuya-font guidelines-subtitle">Team Formation</h3>
+
+          <!-- Numbered Guidelines List -->
+          <ol class="guidelines-list">
+            <li>
+              All <span class="highlight-text">team members</span> should be
+              from the same college;
+              <span class="highlight-text">no inter-college</span> teams are
+              allowed. However, members from
+              <span class="highlight-text">different branches</span> of the same
+              college/institute are encouraged to form a team.
+            </li>
+            <li>
+              Each team would comprise
+              <span class="highlight-text">2–4 members</span>, including the
+              <span class="highlight-text">team leader</span>.
+            </li>
+            <li>
+              As the <span class="highlight-text">software edition</span> of the
+              hackathon is a digital product development competition, the
+              majority of the team members must be well versed with
+              <span class="highlight-text">programming skills</span>. For the
+              <span class="highlight-text">hardware edition</span>, we encourage
+              multidisciplinary teams – which means your team should have a good
+              mix of Mechanical Engineers, Electronics Engineers, Product
+              Designers, and Programmers, etc.
+            </li>
+          </ol>
+
+          <!-- Travel & Accommodation Note Box -->
+          <div class="guidelines-note">
+            <p>
+              <strong>Please Note:</strong> NIT Raipur will be providing
+              <span class="highlight-text">meals, travel</span> and
+              <span class="highlight-text">accommodation free of cost</span>.
+              Travel charges up to
+              <span class="highlight-text">Rs. 1500</span> per person to and fro
+              will be reimbursed when presented with a valid ticket/booking
+              receipt.
+            </p>
+          </div>
+
+          <!-- Judgement Criteria Button -->
+          <div class="guidelines-action">
+            <a href="#judgement" class="ticket-btn judgement-btn sekuya-font"
+              >JUDGEMENT CRITERIA</a
+            >
+          </div>
         </div>
       </section>
 
       <!--FAQs Section-->
       <section id="faqs" class="page-section">
-        <div class="floating-card">
-          <h2 class="sekuyu-font section-title">GUIDELINES</h2>
-          <p>Rules, eligibility, and participation instructions go here...</p>
+        <div class="floating-card faq-card">
+          <h2 class="sekuya-font section-title">FAQS</h2>
+
+          <!-- Top Info Banner -->
+          <div class="faq-banner">
+            <div class="faq-banner-text">
+              <h3>New to hackathon?</h3>
+              <p>
+                Don't worry! We've got you covered with all the basic
+                information.
+              </p>
+            </div>
+
+            <!-- Question Mark Icon (Replaced fa-campground with fa-circle-question) -->
+            <div class="faq-banner-icon">
+              <i class="fa-solid fa-question"></i>
+            </div>
+          </div>
+
+          <!-- Accordion Items Container -->
+          <div class="faq-accordion">
+            <!-- FAQ Item 1 (Active by Default) -->
+            <div class="faq-item active">
+              <button class="faq-question">
+                <span class="question-text sekuya-font"
+                  >HOW DO I REGISTER FOR THE HACKATHON?</span
+                >
+                <span class="faq-icon">-</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Visit our registration page and fill out the required details.
+                  You'll receive a confirmation email once you're registered.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+              <button class="faq-question">
+                <span class="question-text sekuya-font"
+                  >WHAT IS THE PARTICIPATION FEE?</span
+                >
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Participation is completely free of cost! We encourage all
+                  passionate developers to apply.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+              <button class="faq-question">
+                <span class="question-text sekuya-font"
+                  >WHO CAN PARTICIPATE?</span
+                >
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Students from any college, department, or year of study who
+                  are enthusiastic about coding and building projects are
+                  eligible.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+              <button class="faq-question">
+                <span class="question-text sekuya-font"
+                  >WHAT IS THE IDEAL TEAM SIZE?</span
+                >
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Teams can consist of 2 to 4 members. You can also register
+                  individually and find teammates on our official Discord
+                  server.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+              <button class="faq-question">
+                <span class="question-text sekuya-font"
+                  >WHY SHOULD I PARTICIPATE IN CODEUTSAVA?</span
+                >
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  You get to network with industry mentors, compete for massive
+                  prizes, learn new technologies, and showcase your skills.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!--Contact Us Section-->
-      <section id="contact" class="page-section">
-        <div class="floating-card">
-          <h2 class="sekuyu-font section-title">GUIDELINES</h2>
-          <p>Rules, eligibility, and participation instructions go here...</p>
+      <footer id="contact" class="floating-card site-footer">
+        <!-- Top Row Layout -->
+        <div class="footer-top-grid">
+          <!-- Left Column: Logos & About NIT Raipur -->
+          <div class="footer-about-col">
+            <div class="footer-brand-logos">
+              <!-- Replace # with your brand logo link -->
+              <a href="#" class="footer-logo-icon"
+                ><i class="fa-solid fa-house"></i
+              ></a>
+              <!-- Replace # with TCP club logo link -->
+              <a href="#" class="footer-logo-icon"
+                ><i class="fa-solid fa-wand-magic-sparkles"></i
+              ></a>
+            </div>
+            <div class="footer-about-content">
+              <h3 class="sekuya-font footer-heading">ABOUT NIT RAIPUR</h3>
+              <p class="footer-text">
+                The institute is committed to the challenging task of developing
+                technical education by preparing seasoned graduates in highly
+                sophisticated fields of engineering and technology. For about
+                five decades, NIT Raipur has been doing this with sincerity and
+                commitment.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Social Links & Navigation -->
+          <div class="footer-nav-col">
+            <div class="footer-social-box">
+              <div class="footer-social-icons">
+                <!-- Add your social media links here -->
+                <a
+                  href="https://www.facebook.com/codeutsava/"
+                  target="_blank"
+                  aria-label="Facebook"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/codeutsavanitrr/"
+                  target="_blank"
+                  aria-label="Instagram"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="https://github.com/TCP-Tech" target="_blank" aria-label="GitHub"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+                <a
+                  href="https://x.com/codeutsavanitrr?lang=en"
+                  target="_blank"
+                  aria-label="Twitter"
+                  ><i class="fa-brands fa-x-twitter"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/company/codeutsava/"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="https://discord.com/invite/mq8PprVHUv"
+                  target="_blank"
+                  aria-label="Discord"
+                  ><i class="fa-brands fa-discord"></i
+                ></a>
+              </div>
+              <span class="social-subtext"
+                >Follow us on social media for updates</span
+              >
+            </div>
+
+            <!-- Quick Links Navigation -->
+            <ul class="footer-links-list">
+              <li><a href="#hero" class="sekuya-font">Home</a></li>
+              <li><a href="#speakers" class="sekuya-font">Speakers</a></li>
+              <li><a href="#faqs" class="sekuya-font">FAQ</a></li>
+              <li><a href="#contact" class="sekuya-font">Contact Us</a></li>
+            </ul>
+          </div>
         </div>
-      </section>
-      <!--Team Selection-->
-      <section id="team" class="page-section">
-        <div class="floating-card">
-          <h2 class="sekuyu-font section-title">GUIDELINES</h2>
-          <p>Rules, eligibility, and participation instructions go here...</p>
+
+        <hr class="footer-divider" />
+
+        <!-- Bottom Bar Layout -->
+        <div class="footer-bottom-bar">
+          <!-- Bottom Left: Credit Text & Icons -->
+          <div class="footer-credits">
+            <span
+              >Architected with <i class="fa-solid fa-heart heart-icon"></i> by
+              TCP Team</span
+            >
+            <div class="credit-icons">
+              <!-- Add custom icon links here -->
+              <a href="#"><i class="fa-solid fa-code"></i></a>
+              <a href="#"><i class="fa-solid fa-laptop-code"></i></a>
+            </div>
+          </div>
+
+          <!-- Bottom Center: Back To Top Button -->
+          <a href="#hero" id="back-to-top-btn" class="back-to-top">
+            Back to Top <i class="fa-solid fa-arrow-up"></i>
+          </a>
+
+          <!-- Bottom Right: View Map Location Button -->
+          <a
+            href="https://maps.google.com/?q=National+Institute+of+Technology+Raipur"
+            target="_blank"
+            class="map-location-btn"
+            title="Open NIT Raipur location in Google Maps"
+          >
+            <i class="fa-solid fa-location-dot"></i> View Map Location
+          </a>
         </div>
-      </section>
+      </footer>
     </main>
 
     <script src="script.js"></script>
