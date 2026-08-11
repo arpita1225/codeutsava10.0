@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const stoppages = document.querySelectorAll(".stoppage-item");
   const faqItems = document.querySelectorAll(".faq-item");
   const backToTopBtn = document.getElementById("back-to-top-btn");
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const navLinks = document.getElementById("nav-links");
   //JavaScript click handler to remove intro screen element and reveal main content
   // Handle Enter Button Click
   enterBtn.addEventListener("click", () => {
@@ -214,6 +216,32 @@ document.addEventListener("DOMContentLoaded", () => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
+      });
+    });
+  }
+
+  if (hamburgerBtn && navLinks) {
+    // Toggle mobile dropdown menu open/close on click
+    hamburgerBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+
+      // Switch icon between 'hamburger bars' and 'close X'
+      const icon = hamburgerBtn.querySelector("i");
+      if (icon) {
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+      }
+    });
+
+    // Automatically close menu drawer when any link inside it is clicked
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        const icon = hamburgerBtn.querySelector("i");
+        if (icon) {
+          icon.classList.add("fa-bars");
+          icon.classList.remove("fa-xmark");
+        }
       });
     });
   }
